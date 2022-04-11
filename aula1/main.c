@@ -20,12 +20,20 @@ void blockPrint(Block b) {
 
 void blockFill_char_uint_double(Block b, char c, unsigned int i, double d) {
     Byte *pt = b;
-    // fazer
+    *pt = c;
+   pt = pt + 1;
+    *(unsigned int*)pt = i;
+    pt = pt + sizeof(unsigned int);
+    *(double*) pt = d;
 }
 
 void blockPrint_char_uint_double(Block b) {
     Byte *pt = b;
-    // fazer
+    printf("%c\n", *pt); //formatação de caracteres
+    pt = pt + sizeof(char);
+    printf("%u\n", *(unsigned int *)pt); //formatação de números naturais
+    pt = pt + sizeof(unsigned int);
+    printf("%e\n", *(double *) pt); //formatação de numeros reais em notação cientifica
     printf("\n");
 }
 
